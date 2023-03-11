@@ -1,0 +1,112 @@
+SPDX-License-Identifier:GPL;
+
+pragma solidity ^0.8.0;
+
+1st
+contract variable{
+    string public HelloWord= "Muhammad shoaib";
+    uint8 public pos_num=255;
+    int8 public nv_num=25;
+    address public home = 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4;
+  
+    uint public num;
+}
+2nd
+contract Constant{
+    uint256 public vari_num=10;
+    uint256 public constant MY_NUM=10;
+}
+3rd
+contract Immutable{
+    uint public constant MY_NUM=10;
+    address public immutable IMM_ONWER;
+
+    constructor(address _onwer){
+        IMM_ONWER = _onwer;
+    }
+}
+4th
+contract GlobalVariables{
+    function global() external view returns(address,uint,uint){
+    address sender = msg.sender;
+    uint blockNum=block.number;
+    uint blockDiff=block.difficulty;
+
+    return(sender,blockNum,blockDiff);
+        }
+}
+5th
+contract stateVariables{
+    uint public num;
+
+    function setNum(uint number) external {
+        num= number;
+    }
+      function getNum() external view returns(uint) {
+        return num;
+    }
+}
+6th
+contract localVariables{
+     uint public num;
+     function setNum(uint number) external {
+        num= number;
+     }
+
+       function add(uint _a,uint _b) external pure returns(uint){
+           uint a = _a;
+           uint b = _b;
+           return a+b;
+
+       }
+}
+7th
+contract Functions{
+    uint public x = 10;
+
+    function SingleValue(uint num) public view returns(uint){
+        return num + x;
+    }
+    function useSingleValue() public view returns(uint){
+     uint y = SingleValue(9);
+        return y;
+    }
+    function MulpelValue() public pure returns(uint ,bool ,int ){
+        // uint u = 10;
+        // bool l = true;
+        // int z = 2;
+        return(3,true,5);
+        // return (u,l,z);
+    }
+function MulpelValueDec() public pure returns(uint u,bool l,int z){
+         u = 10;
+         l = true;
+         z = 2;
+      /*  return(3,true,5);
+        return (u,l,z);*/
+    }
+
+  function Desturturing() public pure returns(uint){
+      (uint a,uint b, uint c) = (4,3,1);
+      return a+b+c;
+  }
+   function useMultipuleValue() public pure returns(uint,bool,int){
+      (uint a,bool b, int c) =MulpelValueDec() ;
+      return (a,b,c);
+}
+}
+9th
+contract ViewPure{
+    uint x=2;
+    function ViewFunc(uint _num) public view returns(uint){
+     return x + _num;
+    }
+
+     function PureFunc(uint a, uint b) public pure returns(uint){
+     return a+b;
+    }
+     function TraFunc() public returns(uint){
+     x=10;
+     return x;
+    }
+}
